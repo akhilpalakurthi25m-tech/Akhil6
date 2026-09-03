@@ -28,6 +28,7 @@
       <nav class="side-nav">
         <button class="active" data-tab="dashboard">Overview</button>
         <button data-tab="appointments">Appointments</button>
+        <button data-tab="availability">Availability</button>
         <button data-tab="services">Services</button>
         <button data-tab="facilities">Facilities</button>
         <button data-tab="articles">Articles</button>
@@ -50,6 +51,35 @@
 
       <section data-section="appointments" class="hidden">
         <div class="panel"><div class="panel-head"><h2>Appointment requests</h2><span style="color:var(--muted);font-size:.85rem">Use status to manage the clinic queue.</span></div><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Contact</th><th>Date</th><th>Slot</th><th>Status</th><th>Action</th></tr></thead><tbody id="appointmentsTable"></tbody></table></div></div>
+      </section>
+
+
+      <section data-section="availability" class="hidden">
+        <form class="panel" id="bookingRulesForm">
+          <div class="panel-head"><div><h2>Booking rules</h2><span style="color:var(--muted);font-size:.85rem">Control how far ahead patients can book and the size of each slot.</span></div><button class="btn btn-primary btn-sm" type="submit">Save rules</button></div>
+          <div id="bookingRulesNotice" class="hidden"></div>
+          <div class="form-grid">
+            <div class="field"><label>Appointment duration</label><select id="ruleSlotMinutes"><option value="15">15 minutes</option><option value="20">20 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></div>
+            <div class="field"><label>Patients can book up to</label><input id="ruleWindowDays" type="number" min="1" max="180" /></div>
+            <div class="field"><label>Minimum advance notice</label><input id="ruleMinNotice" type="number" min="0" max="72" step="1" /></div>
+            <div class="field"><label>Clinic timezone</label><input id="ruleTimezone" value="Asia/Kolkata" /></div>
+          </div>
+        </form>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Weekly availability</h2><span style="color:var(--muted);font-size:.85rem">Add one or more working windows per day, such as 9–12 and 5–8.</span></div><button class="btn btn-primary btn-sm" id="addScheduleBtn" type="button">+ Add working window</button></div>
+          <div id="scheduleEditor"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Blocked dates</h2><span style="color:var(--muted);font-size:.85rem">Use for holidays, leave, conferences or clinic closures.</span></div></div>
+          <form id="blockedDateForm" class="availability-add-row">
+            <div class="field"><label>Date</label><input id="blockedDate" type="date" required /></div>
+            <div class="field availability-reason"><label>Reason (optional)</label><input id="blockedReason" placeholder="e.g. Clinic closed" /></div>
+            <button class="btn btn-primary btn-sm" type="submit">Block date</button>
+          </form>
+          <div id="blockedDatesEditor" style="margin-top:18px"></div>
+        </div>
       </section>
 
       <section data-section="services" class="hidden">
