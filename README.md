@@ -1,3 +1,15 @@
+# Dr. S. Kaushik Anurag — video consultations
+
+Updated on 6 September 2026 with the supplied MBBS qualification, junior residency in Respiratory Medicine, three years of experience, six services, English/Telugu/Hindi and contact details.
+
+- Existing GitHub Pages hosting and Supabase appointment RPCs are retained.
+- Call, WhatsApp and email links use the doctor's supplied contact details.
+- A successful live booking displays its pending-confirmation status, date/time and a WhatsApp follow-up link. Video joining details are shared by the doctor after confirmation; there is no automatic video-link delivery.
+- `doctor-profile.js` publishes the new content immediately over database settings older than 6 September 2026. The first authenticated admin sign-in synchronizes the profile, services and consultation details using the existing admin permissions. Existing content row IDs are reused, excess old content is hidden, and the completion timestamp is written last. Appointment records and availability rules are untouched.
+- Subsequent admin edits remain authoritative. No new SQL migration or secret key is required.
+
+---
+
 # Dynamic Doctor Clinic Website
 
 A responsive clinic website + no-code-style admin dashboard designed for a doctor who wants to manage appointments, services, facilities, clinic information and educational articles without editing the site code.

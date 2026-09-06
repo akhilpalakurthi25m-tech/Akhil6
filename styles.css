@@ -219,3 +219,36 @@ th { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spac
 #scheduleEditor input[type="time"], #scheduleEditor select, #appointmentsTable select { border:1px solid #cfe2de; border-radius:10px; padding:8px 10px; background:#fbfdfd; color:var(--text); }
 #scheduleEditor input[type="checkbox"] { width:18px; height:18px; accent-color:var(--primary); }
 @media (max-width:760px){ .availability-add-row{grid-template-columns:1fr;} }
+
+/* Doctor profile and direct contact */
+.brand-mark { flex-shrink:0; }
+.brand-text { min-width:0; }
+.brand-text span, .hero-meta span, .eyebrow { font-size:.875rem; }
+.nav-links a { white-space:nowrap; }
+.hero-visual { min-height:510px; }
+.doctor-card { position:relative; inset:auto; min-height:480px; margin:20px 10px 10px 35px; padding:28px; justify-content:flex-start; gap:14px; }
+.doctor-art { position:relative; inset:auto; height:220px; flex-shrink:0; margin-bottom:12px; }
+.doctor-card h3 { margin:0; font-size:1.5rem; line-height:1.25; }
+.doctor-card p { margin:0; font-size:1rem; line-height:1.5; }
+.contact-actions { display:flex; flex-wrap:wrap; gap:12px; margin:24px 0; }
+.btn-whatsapp { background:#146b44; color:white; }
+#clinicEmailLink, #clinicAddress { overflow-wrap:anywhere; }
+.mobile-action-bar { display:none; }
+.notice p { margin:10px 0; }
+button:disabled { opacity:.65; cursor:wait; }
+:focus-visible { outline:3px solid #0b7f70; outline-offset:4px; }
+@media (max-width:1100px) {
+  .nav { gap:16px; }
+  .nav-links { position:absolute; top:100%; left:16px; right:16px; background:white; border:1px solid var(--border); border-radius:16px; padding:16px; display:none; flex-direction:column; box-shadow:var(--shadow); }
+  .nav-links.open { display:flex; }
+  .nav-toggle { display:block; }
+}
+@media (max-width:760px) {
+  .hero-visual { min-height:0; }
+  .doctor-card { margin:20px 0; min-height:440px; }
+  .floating-stat { top:80px; }
+  .mobile-action-bar { position:fixed; bottom:0; left:0; right:0; display:grid; grid-template-columns:1fr 1fr 1.8fr; background:white; border-top:1px solid var(--border); z-index:55; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); gap:6px; }
+  .mobile-action-bar a { display:flex; align-items:center; justify-content:center; min-height:48px; border-radius:12px; background:var(--primary-soft); color:var(--primary-dark); font-size:.875rem; font-weight:700; text-align:center; }
+  .mobile-action-bar a:last-child { background:var(--primary); color:white; }
+  body:not(.admin-body) { padding-bottom:86px; }
+}
