@@ -75,8 +75,8 @@ img { max-width: 100%; }
 .hero-meta span { color: var(--muted); font-size: .82rem; }
 .hero-visual { position: relative; min-height: 510px; }
 .doctor-card { position: absolute; inset: 20px 10px 10px 35px; background: linear-gradient(160deg, #e8f6f2, #fff 62%); border: 1px solid white; border-radius: 38px; box-shadow: var(--shadow); overflow: hidden; padding: 36px; display: flex; flex-direction: column; justify-content: flex-end; }
-.doctor-art { position: absolute; inset: 28px 28px auto 28px; height: 300px; border-radius: 28px; background: linear-gradient(145deg, #bfe7df, #e8f6f3); display: grid; place-items: center; overflow: hidden; }
-.doctor-art::before { content: ''; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.5); position: absolute; top: 34px; }
+.doctor-art { position: absolute; inset: 28px 28px auto 28px; height: 300px; border-radius: 28px; background:#cfe7e5; overflow: hidden; box-shadow:inset 0 0 0 1px rgba(255,255,255,.72); }
+.doctor-photo { width:100%; height:100%; display:block; object-fit:cover; object-position:center 18%; }
 .doctor-illustration { position: relative; z-index: 2; font-size: 9rem; filter: saturate(.72); transform: translateY(20px); }
 .availability-pill { position: absolute; top: 30px; right: 25px; z-index: 3; background: rgba(255,255,255,.88); backdrop-filter: blur(8px); padding: 10px 14px; border-radius: 999px; font-size: .78rem; font-weight: 800; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
 .availability-pill::before { content: ''; display: inline-block; width: 8px; height: 8px; background: #28b67d; border-radius: 50%; margin-right: 7px; }
@@ -166,7 +166,7 @@ img { max-width: 100%; }
 .learning-layout h1 { font-size:clamp(2.7rem,6vw,5rem); line-height:.95; letter-spacing:-.06em; margin:20px 0; }
 .detail-lead { color:#496963; font-size:1.12rem; max-width:760px; }
 .author-line { display:flex; align-items:center; gap:12px; padding:18px 0 6px; color:#395853; }
-.author-mark { width:42px; height:42px; border-radius:13px; display:grid; place-items:center; color:white; background:var(--primary); font-weight:850; }
+.author-photo { width:52px; height:52px; flex:0 0 auto; border-radius:15px; display:block; object-fit:cover; object-position:center 18%; border:2px solid white; box-shadow:0 6px 18px rgba(20,72,65,.16); }
 .author-line span,.author-line strong { display:block; }
 .author-line span { color:var(--muted); font-size:.78rem; }
 .detail-divider { border:0; border-top:1px solid var(--border); margin:28px 0; }
@@ -286,6 +286,7 @@ th { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spac
   .grid-3, .grid-2, .form-grid, .trust-grid { grid-template-columns:1fr; }
   .field.full { grid-column:auto; }
   .doctor-card { inset:20px 0 0 10px; }
+  .doctor-art { inset:24px 22px auto 22px; height:310px; }
   .floating-stat { left:0; top:86px; }
   .footer-grid { grid-template-columns:1fr; }
   .admin-main { padding:22px 16px; }
