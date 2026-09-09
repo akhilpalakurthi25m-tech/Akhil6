@@ -127,6 +127,91 @@ img { max-width: 100%; }
 .article-body p { color:var(--muted); }
 .article-link { color:var(--primary); font-weight:800; font-size:.9rem; }
 
+/* Medical Learning draft product */
+.learning-home { background:linear-gradient(180deg,rgba(238,247,245,.7),rgba(247,251,251,.25)); }
+.learning-home-head { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:34px; }
+.draft-chip { display:inline-flex; align-items:center; white-space:nowrap; border:1px solid #e8cc91; background:#fff8e7; color:#7a5718; border-radius:999px; padding:8px 13px; font-size:.78rem; font-weight:800; }
+.featured-product { display:grid; grid-template-columns:minmax(250px,.7fr) minmax(0,1.3fr); gap:38px; align-items:stretch; background:white; border:1px solid var(--border); border-radius:30px; padding:28px; box-shadow:var(--shadow); }
+.product-cover { min-height:390px; border-radius:24px; padding:30px; overflow:hidden; color:white; background:linear-gradient(145deg,#0b7f70,#0b5149); display:flex; flex-direction:column; justify-content:flex-end; position:relative; box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); }
+.product-cover::before { content:''; position:absolute; width:220px; height:220px; border-radius:50%; border:42px solid rgba(255,255,255,.08); right:-95px; top:-72px; }
+.product-cover-kicker { position:absolute; top:28px; left:30px; font-size:.74rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#c4f1e8; }
+.product-cover strong { font-size:clamp(3.7rem,7vw,5.4rem); line-height:.82; letter-spacing:-.07em; position:relative; }
+.product-cover > span:not(.product-cover-kicker) { margin-top:18px; max-width:250px; color:#d8f1ed; font-weight:600; line-height:1.35; position:relative; }
+.product-cover small { margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,.22); color:#b9ddd7; position:relative; }
+.product-summary { display:flex; flex-direction:column; justify-content:center; padding:16px 16px 16px 2px; }
+.product-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.product-tags span { background:var(--primary-soft); color:var(--primary-dark); padding:6px 10px; border-radius:999px; font-size:.72rem; font-weight:800; }
+.product-summary h3 { margin:18px 0 12px; font-size:clamp(2rem,4vw,3.25rem); line-height:1.03; letter-spacing:-.045em; }
+.product-summary > p { color:var(--muted); font-size:1.05rem; max-width:720px; }
+.product-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:28px 0; }
+.product-facts div { border:1px solid var(--border); border-radius:15px; padding:14px; background:#fbfdfd; }
+.product-facts strong,.product-facts span { display:block; }
+.product-facts strong { font-size:.9rem; }
+.product-facts span { margin-top:3px; color:var(--muted); font-size:.75rem; }
+.product-home-actions { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.launch-note { color:var(--muted); font-size:.82rem; }
+
+.learning-page { background:linear-gradient(180deg,#eef8f6 0,#f7fbfb 34rem); }
+.learning-header .nav { min-height:72px; }
+.learning-header .nav-links { margin-left:auto; }
+.learning-hero { padding:66px 0 46px; }
+.breadcrumb { display:flex; gap:8px; flex-wrap:wrap; color:var(--muted); font-size:.84rem; margin-bottom:24px; }
+.breadcrumb a { color:var(--primary); font-weight:750; }
+.learning-layout { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:32px; align-items:start; }
+.product-detail-card { background:white; border:1px solid var(--border); border-radius:30px; padding:36px; box-shadow:var(--shadow); }
+.detail-labels { display:flex; gap:9px; align-items:center; flex-wrap:wrap; }
+.status-draft { background:#fff4d9; border:1px solid #ead39a; color:#765314; border-radius:999px; padding:6px 10px; font-size:.72rem; font-weight:850; text-transform:uppercase; letter-spacing:.08em; }
+.learning-layout h1 { font-size:clamp(2.7rem,6vw,5rem); line-height:.95; letter-spacing:-.06em; margin:20px 0; }
+.detail-lead { color:#496963; font-size:1.12rem; max-width:760px; }
+.author-line { display:flex; align-items:center; gap:12px; padding:18px 0 6px; color:#395853; }
+.author-mark { width:42px; height:42px; border-radius:13px; display:grid; place-items:center; color:white; background:var(--primary); font-weight:850; }
+.author-line span,.author-line strong { display:block; }
+.author-line span { color:var(--muted); font-size:.78rem; }
+.detail-divider { border:0; border-top:1px solid var(--border); margin:28px 0; }
+.detail-columns { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.detail-columns h2,.preview-panel h2 { font-size:1.15rem; margin:0 0 14px; }
+.check-list { list-style:none; padding:0; margin:0; display:grid; gap:11px; color:#3d5c57; }
+.check-list li { display:flex; gap:10px; }
+.check-list li::before { content:'✓'; color:var(--primary); font-weight:900; }
+.buyer-card { position:sticky; top:104px; background:#102f2a; color:white; border-radius:28px; padding:28px; box-shadow:0 20px 55px rgba(16,47,42,.2); }
+.buyer-card .eyebrow { color:#aee8dd; }
+.buyer-card h2 { margin:10px 0 6px; font-size:2rem; }
+.buyer-card > p { color:#b8cfcb; margin:0 0 22px; }
+.buyer-meta { display:grid; gap:0; margin:20px 0 24px; border-block:1px solid rgba(255,255,255,.14); }
+.buyer-meta div { display:flex; justify-content:space-between; gap:18px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.1); }
+.buyer-meta div:last-child { border-bottom:0; }
+.buyer-meta span { color:#9db8b3; font-size:.82rem; }
+.buyer-meta strong { font-size:.88rem; text-align:right; }
+.btn-disabled { width:100%; color:#6b7e7a; background:#dce8e5; cursor:not-allowed; box-shadow:none; }
+.btn-disabled:hover { transform:none; background:#dce8e5; }
+.buyer-note { margin-top:14px!important; font-size:.76rem; line-height:1.5; }
+.preview-panel { margin-top:24px; border:1px dashed #bfd8d3; background:#f4faf8; border-radius:20px; padding:22px; }
+.preview-panel p { color:var(--muted); margin:0; }
+.readiness-section { padding:30px 0 82px; }
+.readiness-card { background:white; border:1px solid var(--border); border-radius:26px; padding:30px; }
+.readiness-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px; }
+.readiness-grid div { background:#f7fbfa; border:1px solid var(--border); border-radius:16px; padding:16px; }
+.readiness-grid strong { display:block; font-size:.9rem; }
+.readiness-grid span { display:block; color:var(--muted); margin-top:4px; font-size:.78rem; }
+
+@media (max-width:980px){
+  .learning-layout{grid-template-columns:1fr;}
+  .buyer-card{position:static;}
+  .readiness-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:760px){
+  .learning-home-head{display:block;}
+  .learning-home-head .draft-chip{margin-top:18px;}
+  .featured-product{grid-template-columns:1fr;padding:18px;gap:20px;}
+  .product-cover{min-height:330px;}
+  .product-summary{padding:8px 4px 12px;}
+  .product-facts{grid-template-columns:1fr;}
+  .learning-hero{padding-top:42px;}
+  .product-detail-card{padding:26px 22px;}
+  .detail-columns{grid-template-columns:1fr;}
+  .readiness-grid{grid-template-columns:1fr;}
+}
+
 .footer { background:#0e2b27; color:white; padding:54px 0 24px; }
 .footer-grid { display:grid; grid-template-columns:1.2fr .8fr .8fr; gap:40px; }
 .footer p, .footer a, .footer li { color:#a9c3be; }
@@ -220,35 +305,33 @@ th { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spac
 #scheduleEditor input[type="checkbox"] { width:18px; height:18px; accent-color:var(--primary); }
 @media (max-width:760px){ .availability-add-row{grid-template-columns:1fr;} }
 
-/* Doctor profile and direct contact */
-.brand-mark { flex-shrink:0; }
-.brand-text { min-width:0; }
-.brand-text span, .hero-meta span, .eyebrow { font-size:.875rem; }
-.nav-links a { white-space:nowrap; }
-.hero-visual { min-height:510px; }
-.doctor-card { position:relative; inset:auto; min-height:480px; margin:20px 10px 10px 35px; padding:28px; justify-content:flex-start; gap:14px; }
-.doctor-art { position:relative; inset:auto; height:220px; flex-shrink:0; margin-bottom:12px; }
-.doctor-card h3 { margin:0; font-size:1.5rem; line-height:1.25; }
-.doctor-card p { margin:0; font-size:1rem; line-height:1.5; }
-.contact-actions { display:flex; flex-wrap:wrap; gap:12px; margin:24px 0; }
-.btn-whatsapp { background:#146b44; color:white; }
-#clinicEmailLink, #clinicAddress { overflow-wrap:anywhere; }
+
+/* Version 3: public contact, consent & booking confirmation */
+.btn-whatsapp { background:#166f5d; color:white; box-shadow:0 10px 25px rgba(22,111,93,.16); }
+.btn-whatsapp:hover { background:#105b4d; }
+.contact-layout { display:grid; grid-template-columns:.9fr 1.1fr; gap:34px; align-items:center; }
+.contact-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+.contact-card a { color:var(--primary); font-weight:750; }
+.consent-row { display:flex; gap:11px; align-items:flex-start; margin-top:18px; padding:14px; border:1px solid var(--border); border-radius:14px; background:#f8fbfa; color:#46635e; font-size:.82rem; line-height:1.45; }
+.consent-row input { width:18px; height:18px; margin-top:1px; accent-color:var(--primary); flex:0 0 auto; }
+.consent-row a { color:var(--primary); text-decoration:underline; font-weight:750; }
+.honeypot { position:absolute!important; left:-10000px!important; width:1px!important; height:1px!important; overflow:hidden!important; }
+.booking-confirmation { text-align:center; max-width:640px; }
+.confirmation-icon { width:64px; height:64px; display:grid; place-items:center; border-radius:50%; margin:0 auto 18px; background:var(--primary-soft); color:var(--primary); font-size:1.8rem; font-weight:900; }
+.confirmation-copy { color:var(--muted); max-width:500px; margin:0 auto 22px; }
+.confirmation-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:left; margin:22px 0; }
+.confirmation-grid div { background:#f5faf8; border:1px solid var(--border); border-radius:14px; padding:14px; }
+.confirmation-grid span { display:block; color:var(--muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; }
+.confirmation-grid strong { font-size:.95rem; }
+.confirmation-actions { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.confirmation-note { font-size:.75rem; color:var(--muted); margin:18px 0 0; }
 .mobile-action-bar { display:none; }
-.notice p { margin:10px 0; }
-button:disabled { opacity:.65; cursor:wait; }
-:focus-visible { outline:3px solid #0b7f70; outline-offset:4px; }
-@media (max-width:1100px) {
-  .nav { gap:16px; }
-  .nav-links { position:absolute; top:100%; left:16px; right:16px; background:white; border:1px solid var(--border); border-radius:16px; padding:16px; display:none; flex-direction:column; box-shadow:var(--shadow); }
-  .nav-links.open { display:flex; }
-  .nav-toggle { display:block; }
-}
-@media (max-width:760px) {
-  .hero-visual { min-height:0; }
-  .doctor-card { margin:20px 0; min-height:440px; }
-  .floating-stat { top:80px; }
-  .mobile-action-bar { position:fixed; bottom:0; left:0; right:0; display:grid; grid-template-columns:1fr 1fr 1.8fr; background:white; border-top:1px solid var(--border); z-index:55; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); gap:6px; }
-  .mobile-action-bar a { display:flex; align-items:center; justify-content:center; min-height:48px; border-radius:12px; background:var(--primary-soft); color:var(--primary-dark); font-size:.875rem; font-weight:700; text-align:center; }
-  .mobile-action-bar a:last-child { background:var(--primary); color:white; }
-  body:not(.admin-body) { padding-bottom:86px; }
+.appt-actions { display:flex; gap:7px; align-items:center; flex-wrap:wrap; }
+@media (max-width:980px){ .contact-layout{grid-template-columns:1fr;} }
+@media (max-width:760px){
+  body{padding-bottom:66px;}
+  .mobile-action-bar{position:fixed;left:10px;right:10px;bottom:10px;z-index:70;background:rgba(14,43,39,.96);backdrop-filter:blur(14px);display:grid;grid-template-columns:1fr 1fr 1fr;border-radius:18px;padding:6px;box-shadow:0 16px 40px rgba(0,0,0,.22);}
+  .mobile-action-bar a{color:white;text-align:center;padding:11px 6px;font-size:.82rem;font-weight:800;border-radius:13px;}
+  .mobile-action-bar a:hover{background:rgba(255,255,255,.1);}
+  .confirmation-grid{grid-template-columns:1fr;}
 }
