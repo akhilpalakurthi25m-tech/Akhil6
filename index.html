@@ -4,196 +4,167 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <meta name="description" content="Modern doctor clinic website with online appointment requests, services, facilities and health education articles." />
-  <title>Dr. S. Kaushik Anurag | Appointments & Medical Learning</title>
+  <meta name="description" content="Book a video consultation with Dr. S. Kaushik Anurag and access doctor-reviewed health and medical-learning resources." />
+  <meta name="theme-color" content="#0a5f57" />
+  <title>Dr. S. Kaushik Anurag | Video Consultations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="public-site">
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Clinic home">
-        <div class="brand-mark">✚</div>
-        <div class="brand-text"><strong id="brandClinicName">Dr. S. Kaushik Anurag</strong><span>Compassionate everyday care</span></div>
+      <a class="brand" href="#top" aria-label="Dr. S. Kaushik Anurag home">
+        <div class="brand-mark" aria-hidden="true">✚</div>
+        <div class="brand-text"><strong id="brandClinicName">Dr. S. Kaushik Anurag</strong><span>Video consultations &amp; health education</span></div>
       </a>
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#facilities">Consultation info</a>
+        <a href="#how-it-works">How it works</a>
         <a href="learning.html">Medical Learning</a>
         <a href="#articles">Health Library</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation">☰</button>
-      <a href="#appointment" class="btn btn-primary">Book appointment</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-controls="navLinks">☰</button>
+      <a href="#appointment" class="btn btn-primary nav-cta">Book consultation</a>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main id="mainContent">
+    <section class="hero" id="top">
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
       <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Simple care. Clear communication.</div>
-          <h1>Healthcare that feels <span>personal.</span></h1>
+        <div class="hero-content">
+          <div class="hero-kicker"><span></span> Video consultations • English · Telugu · Hindi</div>
+          <h1>Thoughtful medical care, <span>wherever you are.</span></h1>
           <p class="hero-copy" id="heroIntro">Request an appointment with Dr. S. Kaushik Anurag, review consultation information and access medical learning resources.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#appointment">Request appointment →</a>
-            <a class="btn btn-outline" href="#articles">Explore health articles</a>
+            <a class="btn btn-primary btn-large" href="#appointment">Book video consultation <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline btn-large" href="#how-it-works">See how it works</a>
           </div>
-          <div class="hero-meta">
+          <div class="hero-meta" aria-label="Doctor profile highlights">
             <div><strong id="experienceYears">Doctor profile</strong><span>Clinical experience</span></div>
             <div><strong id="consultationMode">Appointment-based</strong><span>Consultation mode</span></div>
-            <div><strong>Patient-first</strong><span>Transparent communication</span></div>
+            <div><strong>Patient-first</strong><span>Clear communication</span></div>
           </div>
         </div>
-        <div class="hero-visual" aria-label="Doctor profile card">
-          <div class="doctor-card">
-            <div class="availability-pill">Appointments open</div>
+
+        <div class="hero-visual" aria-label="Doctor profile">
+          <div class="portrait-backdrop" aria-hidden="true"></div>
+          <article class="doctor-card">
             <div class="doctor-art"><img class="doctor-photo" src="dr-kaushik-portrait.webp" alt="Portrait of Dr. S. Kaushik Anurag" width="1000" height="1250" fetchpriority="high" onerror="this.parentElement.classList.add('photo-unavailable');this.remove()" /></div>
-            <h3 id="doctorName">Dr. S. Kaushik Anurag</h3>
-            <p id="doctorQualification">Professional details managed from the admin dashboard</p>
-          </div>
-          <div class="floating-stat"><strong id="nextAvailability">Check slots</strong><span>Next availability</span></div>
+            <div class="doctor-card-copy"><div class="availability-pill">Appointments open</div><h2 id="doctorName">Dr. S. Kaushik Anurag</h2><p id="doctorQualification">Professional details managed from the admin dashboard</p></div>
+          </article>
+          <a class="floating-stat" href="#appointment"><span>Next availability</span><strong id="nextAvailability">Check slots</strong><small>View live schedule →</small></a>
+          <div class="profile-badge"><span aria-hidden="true">✓</span><div><strong>Direct booking</strong><small>No patient account needed</small></div></div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip">
+    <section class="trust-strip" aria-label="Consultation highlights">
       <div class="container trust-grid">
         <div class="trust-item"><div class="trust-icon">✓</div><span>Online appointment requests</span></div>
-        <div class="trust-item"><div class="trust-icon">⏱</div><span>Clear consultation hours & slots</span></div>
-        <div class="trust-item"><div class="trust-icon">⌂</div><span>Venue shared after confirmation</span></div>
+        <div class="trust-item"><div class="trust-icon">◷</div><span>Clear consultation hours &amp; slots</span></div>
+        <div class="trust-item"><div class="trust-icon">▣</div><span>Joining details after confirmation</span></div>
         <div class="trust-item"><div class="trust-icon">▤</div><span>Doctor-reviewed education</span></div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container grid-2" style="align-items:center">
-        <div>
-          <div class="eyebrow">About the doctor</div>
-          <h2 class="section-title">One doctor. One trusted point of care.</h2>
-          <p class="section-copy" id="doctorBio">Dr. S. Kaushik Anurag provides appointment-based consultations with an emphasis on clear communication, appropriate follow-up and a respectful patient experience.</p>
-        </div>
-        <div class="card">
-          <div class="eyebrow">Consultation approach</div>
-          <h3 style="font-size:1.6rem">Listen → explain → decide together.</h3>
-          <p>This website is for appointment scheduling and general health education. The consultation venue is shared after booking confirmation. It is not intended for emergencies or for storing full medical records.</p>
-        </div>
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-heading"><div class="eyebrow">About the doctor</div><h2 class="section-title">Care begins with listening.</h2><p class="section-copy" id="doctorBio">Dr. S. Kaushik Anurag provides appointment-based consultations with an emphasis on clear communication, appropriate follow-up and a respectful patient experience.</p><a class="text-link" href="#appointment">Request a consultation <span aria-hidden="true">→</span></a></div>
+        <article class="approach-card">
+          <div class="approach-number">01</div>
+          <div><div class="eyebrow">Consultation approach</div><h3>Listen. Explain. Decide together.</h3><p>Designed for convenient appointment scheduling, respectful communication and appropriate follow-up. This website does not provide emergency care or store complete medical records.</p></div>
+          <div class="approach-points"><span>Clear explanations</span><span>Practical guidance</span><span>Respectful follow-up</span></div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="services" style="background:rgba(238,247,245,.56)">
+    <section class="section section-tint" id="services">
       <div class="container">
-        <div class="eyebrow">Clinical services</div>
-        <h2 class="section-title">Care built around everyday health needs.</h2>
-        <p class="section-copy">Services below are managed from the admin dashboard. Changes can be published without editing the website code.</p>
-        <div class="grid-3" id="servicesGrid" style="margin-top:34px"></div>
+        <div class="section-head"><div><div class="eyebrow">Clinical services</div><h2 class="section-title">Support for everyday health needs.</h2></div><p class="section-copy">Explore the consultation areas currently offered. The doctor can keep this information updated through the admin dashboard.</p></div>
+        <div class="grid-3 elevated-grid" id="servicesGrid"></div>
       </div>
     </section>
 
-    <section class="section" id="appointment">
+    <section class="section process-section" id="how-it-works">
+      <div class="container">
+        <div class="process-intro"><div class="eyebrow">How it works</div><h2 class="section-title">From booking to consultation in three clear steps.</h2></div>
+        <div class="process-grid">
+          <article class="process-card"><span>01</span><div class="process-icon">◫</div><h3>Choose a slot</h3><p>Select a preferred date and one of the doctor’s live available consultation times.</p></article>
+          <article class="process-card"><span>02</span><div class="process-icon">✓</div><h3>Request confirmation</h3><p>Submit basic contact information. The request appears immediately in the secure admin dashboard.</p></article>
+          <article class="process-card"><span>03</span><div class="process-icon">▶</div><h3>Join the consultation</h3><p>After review, consultation and joining details are shared through the confirmed contact channel.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section appointment-section" id="appointment">
       <div class="container appointment-wrap">
         <div class="info-panel">
-          <div class="eyebrow">Appointments</div>
+          <div class="info-panel-top"><div class="eyebrow">Video consultation</div><span class="secure-chip">Private scheduling</span></div>
           <h2>Request a consultation in under a minute.</h2>
-          <p>Choose a date to see the doctor's currently available appointment slots. The clinic can review the request from the admin dashboard and confirm it by phone or email.</p>
+          <p>Choose a date to see currently available appointment slots. The doctor can review the request and confirm the video-consultation details by phone, WhatsApp or email.</p>
           <div class="info-list">
-            <div><span>✓</span><span>No account needed for patients.</span></div>
-            <div><span>✓</span><span>Only basic scheduling information is requested.</span></div>
-            <div><span>✓</span><span>For emergencies, contact local emergency services instead of using this form.</span></div>
+            <div><span>✓</span><span><strong>No patient account needed.</strong><small>Book directly using basic contact details.</small></span></div>
+            <div><span>✓</span><span><strong>Live appointment availability.</strong><small>Booked slots are removed automatically.</small></span></div>
+            <div><span>✓</span><span><strong>Emergency-safe guidance.</strong><small>Use local emergency services for urgent medical situations.</small></span></div>
           </div>
         </div>
         <form class="form-card" id="appointmentForm">
-          <div class="eyebrow">Appointment request</div>
-          <h3 style="font-size:1.6rem;margin:8px 0 22px">Tell us when you would like to visit.</h3>
+          <div class="form-heading"><div><div class="eyebrow">Appointment request</div><h3>Choose a convenient date and time.</h3></div><span>Usually takes 1 minute</span></div>
           <div class="form-grid">
-            <div class="field"><label for="patientName">Full name *</label><input id="patientName" name="patientName" required autocomplete="name" /></div>
-            <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" required inputmode="tel" autocomplete="tel" /></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" /></div>
+            <div class="field"><label for="patientName">Full name *</label><input id="patientName" name="patientName" required autocomplete="name" placeholder="Enter your full name" /></div>
+            <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="Enter mobile number" /></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="Optional" /></div>
             <div class="field"><label for="appointmentDate">Preferred date *</label><input id="appointmentDate" name="appointmentDate" type="date" required /></div>
             <div class="field full"><label for="slot">Available appointment time *</label><select id="slot" name="slot" required disabled><option value="">Select a date first</option></select><small id="slotHelp">Times are generated from the doctor's live availability and existing bookings.</small></div>
           </div>
           <div class="field full honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
           <label class="consent-row"><input id="privacyConsent" type="checkbox" required /><span>I consent to my name and contact details being used only to process this appointment request. I have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>. *</span></label>
           <div id="appointmentNotice" class="hidden"></div>
-          <button class="btn btn-primary" type="submit" style="margin-top:20px;width:100%">Submit appointment request</button>
-          <p style="font-size:.76rem;color:var(--muted);margin:12px 0 0">Please do not include symptoms, reports or sensitive medical history in this form.</p>
+          <button class="btn btn-primary submit-booking" type="submit">Submit appointment request <span aria-hidden="true">→</span></button>
+          <p class="form-privacy">Please do not include symptoms, reports or sensitive medical history in this form.</p>
         </form>
       </div>
     </section>
 
-    <section class="section" id="facilities" style="background:rgba(238,247,245,.56)">
+    <section class="section section-tint" id="facilities">
       <div class="container">
-        <div class="eyebrow">Consultation information</div>
-        <h2 class="section-title">Know what to expect before your appointment.</h2>
-        <div class="grid-3" id="facilitiesGrid" style="margin-top:34px"></div>
+        <div class="section-head"><div><div class="eyebrow">Consultation information</div><h2 class="section-title">Know what to expect before booking.</h2></div><p class="section-copy">Practical details about appointment scheduling, confirmation and contact.</p></div>
+        <div class="grid-3 elevated-grid" id="facilitiesGrid"></div>
       </div>
     </section>
 
     <section class="section learning-home" id="learning">
       <div class="container">
-        <div class="learning-home-head">
-          <div>
-            <div class="eyebrow">Medical learning</div>
-            <h2 class="section-title">Quick-reference notes for medical learners.</h2>
-            <p class="section-copy">A separate education area for study resources intended for medical students and healthcare professionals.</p>
-          </div>
-          <span class="free-chip">Free resource</span>
-        </div>
+        <div class="learning-home-head"><div><div class="eyebrow">Medical learning</div><h2 class="section-title">Concise resources for medical learners.</h2><p class="section-copy">A dedicated learning area for students and healthcare professionals, separate from patient information.</p></div><span class="free-chip">Free resource</span></div>
         <article class="featured-product">
-          <div class="product-cover" aria-label="IV Fluids PDF notes cover">
-            <span class="product-cover-kicker">Clinical Quick Reference</span>
-            <strong>IV<br>Fluids</strong>
-            <span>Physiology, protocols &amp; clinical use</span>
-            <small>11-page PDF notes</small>
-          </div>
-          <div class="product-summary">
-            <div class="product-tags"><span>NEET-PG</span><span>English</span><span>PDF</span></div>
-            <h3>IV Fluids: Physiology, Protocols &amp; Clinical Use</h3>
-            <p>A compact revision resource covering fluid physiology, major fluid types, clinical scenarios, resuscitation principles and worked calculations.</p>
-            <div class="product-facts">
-              <div><strong>11 pages</strong><span>Quick revision</span></div>
-              <div><strong>Clinical tables</strong><span>At-a-glance learning</span></div>
-              <div><strong>Worked examples</strong><span>Applied calculations</span></div>
-            </div>
-            <div class="product-home-actions">
-              <a class="btn btn-primary" href="learning.html">Get free notes →</a>
-              <span class="launch-note">₹0 • No sign-in or payment required</span>
-            </div>
-          </div>
+          <div class="product-cover" aria-label="IV Fluids PDF notes cover"><span class="product-cover-kicker">Clinical Quick Reference</span><strong>IV<br>Fluids</strong><span>Physiology, protocols &amp; clinical use</span><small>11-page PDF notes</small></div>
+          <div class="product-summary"><div class="product-tags"><span>NEET-PG</span><span>English</span><span>PDF</span></div><h3>IV Fluids: Physiology, Protocols &amp; Clinical Use</h3><p>A compact revision resource covering fluid physiology, major fluid types, clinical scenarios, resuscitation principles and worked calculations.</p><div class="product-facts"><div><strong>11 pages</strong><span>Quick revision</span></div><div><strong>Clinical tables</strong><span>At-a-glance learning</span></div><div><strong>Worked examples</strong><span>Applied calculations</span></div></div><div class="product-home-actions"><a class="btn btn-gold" href="learning.html">Explore free notes <span aria-hidden="true">→</span></a><span class="launch-note">₹0 • No sign-in or payment required</span></div></div>
         </article>
       </div>
     </section>
 
-    <section class="section" id="articles">
-      <div class="container">
-        <div class="eyebrow">Health library</div>
-        <h2 class="section-title">Useful health information, in plain language.</h2>
-        <p class="section-copy">Educational content can be added or unpublished by the doctor from the admin dashboard.</p>
-        <div class="grid-3" id="articlesGrid" style="margin-top:34px"></div>
-      </div>
+    <section class="section articles-section" id="articles">
+      <div class="container"><div class="section-head"><div><div class="eyebrow">Health library</div><h2 class="section-title">Useful information, in plain language.</h2></div><p class="section-copy">Doctor-managed educational articles that can be added, updated or unpublished from the admin dashboard.</p></div><div class="grid-3 elevated-grid" id="articlesGrid"></div></div>
     </section>
 
-    <section class="section" id="contact" style="background:rgba(238,247,245,.56)">
+    <section class="section contact-section" id="contact">
       <div class="container contact-layout">
-        <div>
-          <div class="eyebrow">Contact the doctor</div>
-          <h2 class="section-title">Questions before booking?</h2>
-          <p class="section-copy">There is currently no standalone clinic location. Appointment and consultation-venue instructions can be shared after the booking is reviewed.</p>
-          <div class="contact-actions">
-            <a id="callBtn" class="btn btn-primary" href="#">☎ Call</a>
-            <a id="whatsappBtn" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
-          </div>
-        </div>
-        <div class="card contact-card">
-          <p><strong>📍 Consultation venue</strong><br><span id="venueNote">Venue details are shared after appointment confirmation.</span></p>
-          <p style="margin-top:18px"><strong>☎ Phone</strong><br><a id="clinicPhoneLink" href="#"><span id="clinicPhone">+91 90000 00000</span></a></p>
-          <p style="margin-top:18px"><strong>💬 WhatsApp</strong><br><a id="clinicWhatsappLink" href="#" target="_blank" rel="noopener"><span id="clinicWhatsapp">+91 90000 00000</span></a></p>
-          <p style="margin-top:18px"><strong>✉ Email</strong><br><span id="clinicEmail">clinic@example.com</span></p>
-          <p style="margin-top:18px"><strong>🕒 Availability</strong><br><span id="clinicHours">Mon–Sat: sample hours</span></p>
-        </div>
+        <div class="contact-intro"><div class="eyebrow">Contact the doctor</div><h2 class="section-title">Questions before booking?</h2><p class="section-copy">There is currently no standalone clinic location. Video-consultation and joining instructions are shared after the appointment request is reviewed.</p><div class="contact-actions"><a id="callBtn" class="btn btn-primary" href="#">☎ Call</a><a id="whatsappBtn" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></div></div>
+        <article class="contact-card">
+          <div class="contact-row"><span>01</span><div><strong>Consultation details</strong><p id="venueNote">Joining details are shared after appointment confirmation.</p></div></div>
+          <div class="contact-row"><span>02</span><div><strong>Phone</strong><p><a id="clinicPhoneLink" href="#"><span id="clinicPhone">+91 90000 00000</span></a></p></div></div>
+          <div class="contact-row"><span>03</span><div><strong>WhatsApp</strong><p><a id="clinicWhatsappLink" href="#" target="_blank" rel="noopener"><span id="clinicWhatsapp">+91 90000 00000</span></a></p></div></div>
+          <div class="contact-row"><span>04</span><div><strong>Email</strong><p id="clinicEmail">clinic@example.com</p></div></div>
+          <div class="contact-row"><span>05</span><div><strong>Availability</strong><p id="clinicHours">By appointment</p></div></div>
+        </article>
       </div>
     </section>
   </main>
@@ -201,42 +172,18 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div><div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong id="footerClinicName">Dr. S. Kaushik Anurag</strong><span>Compassionate everyday care</span></div></div><p style="max-width:430px">Appointment scheduling and general health education from the doctor. This website does not provide emergency medical advice.</p></div>
-        <div><strong>Explore</strong><ul style="margin-top:14px"><li><a href="#services">Services</a></li><li><a href="#facilities">Consultation info</a></li><li><a href="learning.html">Medical Learning</a></li><li><a href="#articles">Health Library</a></li><li><a href="#appointment">Appointments</a></li></ul></div>
-        <div><strong>Clinic</strong><ul style="margin-top:14px"><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="admin.html">Admin login</a></li></ul></div>
+        <div><div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong id="footerClinicName">Dr. S. Kaushik Anurag</strong><span>Video consultations &amp; health education</span></div></div><p class="footer-intro">Appointment scheduling and general health education from the doctor. This website does not provide emergency medical advice.</p></div>
+        <div><strong>Explore</strong><ul><li><a href="#services">Services</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="learning.html">Medical Learning</a></li><li><a href="#articles">Health Library</a></li></ul></div>
+        <div><strong>Information</strong><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="privacy.html">Privacy notice</a></li><li><a href="admin.html">Admin login</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© <span id="year"></span> <span id="copyrightClinic">Dr. S. Kaushik Anurag</span>. All rights reserved.</span><span>For emergencies, contact your local emergency service.</span></div>
     </div>
   </footer>
 
-  <div class="mobile-action-bar" aria-label="Quick contact actions">
-    <a id="mobileCallBtn" href="#">☎ Call</a>
-    <a id="mobileWhatsappBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="#appointment">Book</a>
-  </div>
+  <div class="mobile-action-bar" aria-label="Quick contact actions"><a id="mobileCallBtn" href="#">☎ Call</a><a id="mobileWhatsappBtn" href="#" target="_blank" rel="noopener">WhatsApp</a><a href="#appointment">Book</a></div>
 
-  <div class="modal-backdrop hidden" id="bookingModal">
-    <article class="modal booking-confirmation">
-      <div class="confirmation-icon">✓</div>
-      <div class="eyebrow">Appointment request received</div>
-      <h2 style="margin:8px 0 6px">Your slot has been reserved.</h2>
-      <p class="confirmation-copy">The request is pending review by the doctor. Keep the booking reference below for follow-up.</p>
-      <div class="confirmation-grid">
-        <div><span>Reference</span><strong id="confirmRef">—</strong></div>
-        <div><span>Date</span><strong id="confirmDate">—</strong></div>
-        <div><span>Time</span><strong id="confirmTime">—</strong></div>
-        <div><span>Venue</span><strong id="confirmVenue">Shared after confirmation</strong></div>
-      </div>
-      <div class="confirmation-actions">
-        <a id="confirmWhatsapp" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
-        <a id="confirmCall" class="btn btn-outline" href="#">Call doctor</a>
-        <button id="bookingClose" class="btn btn-primary" type="button">Done</button>
-      </div>
-      <p class="confirmation-note">For emergencies, contact local emergency services instead of waiting for an appointment response.</p>
-    </article>
-  </div>
-
-  <div class="modal-backdrop hidden" id="articleModal"><article class="modal"><div class="modal-head"><div><div class="eyebrow" id="modalCategory"></div><h2 id="modalTitle" style="margin:8px 0 4px"></h2></div><button class="modal-close" id="modalClose" aria-label="Close article">✕</button></div><div id="modalContent" style="margin-top:22px;color:#3e5b56"></div></article></div>
+  <div class="modal-backdrop hidden" id="bookingModal"><article class="modal booking-confirmation"><div class="confirmation-icon">✓</div><div class="eyebrow">Appointment request received</div><h2>Your slot has been reserved.</h2><p class="confirmation-copy">The request is pending review by the doctor. Keep the booking reference below for follow-up.</p><div class="confirmation-grid"><div><span>Reference</span><strong id="confirmRef">—</strong></div><div><span>Date</span><strong id="confirmDate">—</strong></div><div><span>Time</span><strong id="confirmTime">—</strong></div><div><span>Joining details</span><strong id="confirmVenue">Shared after confirmation</strong></div></div><div class="confirmation-actions"><a id="confirmWhatsapp" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">Message on WhatsApp</a><a id="confirmCall" class="btn btn-outline" href="#">Call doctor</a><button id="bookingClose" class="btn btn-primary" type="button">Done</button></div><p class="confirmation-note">For emergencies, contact local emergency services instead of waiting for an appointment response.</p></article></div>
+  <div class="modal-backdrop hidden" id="articleModal"><article class="modal"><div class="modal-head"><div><div class="eyebrow" id="modalCategory"></div><h2 id="modalTitle"></h2></div><button class="modal-close" id="modalClose" aria-label="Close article">✕</button></div><div id="modalContent" class="modal-content"></div></article></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>

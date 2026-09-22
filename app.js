@@ -10,15 +10,19 @@
 
   const seed = {
     settings: {
-      clinic_name:'Dr. S. Kaushik Anurag', doctor_name:'Dr. S. Kaushik Anurag', qualification:'Professional details managed from the admin dashboard',
-      hero_intro:'Request an appointment with Dr. S. Kaushik Anurag, review consultation information and access medical learning resources.',
-      doctor_bio:'Dr. S. Kaushik Anurag provides appointment-based consultations with an emphasis on clear communication, appropriate follow-up and a respectful patient experience.',
-      experience:'Doctor profile', consultation_mode:'Appointment-based', next_availability:'Check slots',
+      clinic_name:'Dr. S. Kaushik Anurag', doctor_name:'Dr. S. Kaushik Anurag', qualification:'MBBS • Junior Resident in Respiratory Medicine',
+      hero_intro:'Video consultations with Dr. S. Kaushik Anurag for general health, diabetes, hypertension, fever, preventive health, and diet and lifestyle guidance.',
+      doctor_bio:'Dr. S. Kaushik Anurag provides video consultations with an emphasis on clear communication, appropriate follow-up and a respectful patient experience.',
+      experience:'3 years', consultation_mode:'Video consultation', next_availability:'View slots',
       address:'', phone:'+91 90000 00000', whatsapp:'+91 90000 00000', email:'clinic@example.com', clinic_hours:'Mon–Sat: sample hours',
-      venue_note:'Consultation venue details are shared after appointment confirmation.'
+      venue_note:'Video-consultation and joining details are shared after appointment confirmation.'
     },
-    services:[{id:1,icon:'🩺',title:'General Consultation',description:'Sample consultation service for prototype use.',active:true,display_order:1}],
-    facilities:[{id:1,icon:'📅',title:'Appointment-based consultation',description:'Choose a live available slot online.',active:true,display_order:1},{id:2,icon:'📍',title:'Venue after confirmation',description:'Consultation location and instructions are shared after review.',active:true,display_order:2},{id:3,icon:'💬',title:'Direct contact',description:'Call or WhatsApp for appointment-related questions.',active:true,display_order:3}],
+    services:[
+      {id:1,icon:'🩺',title:'General health consultation',description:'Appointment-based support for common health concerns and appropriate follow-up.',active:true,display_order:1},
+      {id:2,icon:'◉',title:'Diabetes and hypertension',description:'General consultation support for ongoing monitoring and lifestyle guidance.',active:true,display_order:2},
+      {id:3,icon:'✦',title:'Preventive health',description:'Practical guidance on preventive care, diet and everyday health habits.',active:true,display_order:3}
+    ],
+    facilities:[{id:1,icon:'📅',title:'Live appointment slots',description:'Choose an available video-consultation time online.',active:true,display_order:1},{id:2,icon:'▶',title:'Joining details after confirmation',description:'Consultation instructions are shared after the booking request is reviewed.',active:true,display_order:2},{id:3,icon:'💬',title:'Direct contact',description:'Call or WhatsApp for appointment-related questions.',active:true,display_order:3}],
     articles:[]
   };
 
