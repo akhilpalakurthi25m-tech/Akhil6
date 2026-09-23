@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="theme-color" content="#0b4fb3" />
+  <title>My Library Preview | Dr. Kaushik Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body class="store-site">
+  <header class="store-header">
+    <div class="store-container store-nav">
+      <a class="store-brand" href="index.html"><span class="store-brand-mark"><span>+</span></span><span class="store-brand-copy"><strong>Dr. Kaushik Learning</strong><small>Medical notes &amp; clinical revision</small></span></a>
+      <nav class="store-nav-links" id="navLinks"><a href="index.html">Home</a><a href="learning.html">Notes Store</a><a href="index.html#subjects">Subjects</a><a href="index.html#free-resource">Free Resources</a><a href="index.html#author">About the Author</a><a href="appointment.html">Consultation</a></nav>
+      <button class="store-nav-toggle" id="navToggle" type="button" aria-label="Open navigation">☰</button>
+      <a class="store-library-link" href="library.html"><span>▣</span> My Library</a>
+    </div>
+  </header>
+  <main class="library-main">
+    <div class="store-container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>My Library</span></div>
+      <div class="library-layout">
+        <section class="library-preview-card">
+          <div class="store-eyebrow">Learner area preview</div>
+          <h1>Your medical notes, organised in one place.</h1>
+          <p>After the payment phase is connected, students will sign in using a secure email link and find every purchased or free resource here.</p>
+          <div class="library-demo-item"><div class="library-demo-cover">IV<br>Fluids</div><div><strong>IV Fluids: Physiology, Protocols &amp; Clinical Use</strong><small>Free resource · PDF notes · 11 pages</small></div><span>Available</span></div>
+        </section>
+        <aside class="library-status-card">
+          <div class="store-eyebrow">Current build status</div>
+          <h2>Design complete. Secure access comes next.</h2>
+          <p>This page deliberately does not show a working login yet. Authentication will be enabled together with private storage and verified Razorpay payments.</p>
+          <div class="library-status-list"><div><b>✓</b><span>Store-first layout and catalogue</span></div><div><b>○</b><span>Supabase email OTP login</span></div><div><b>○</b><span>Purchase entitlement checks</span></div><div><b>○</b><span>Private expiring download links</span></div></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="store-footer">
+    <div class="store-container store-footer-bottom" style="margin-top:0"><span>© <span id="year"></span> Dr. Kaushik Learning.</span><span>Preview design · Login and payments are not enabled.</span></div>
+  </footer>
+  <div class="store-mobile-bar"><a href="learning.html">Browse Notes</a><a href="appointment.html">Consultation</a></div>
+  <script src="catalogue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

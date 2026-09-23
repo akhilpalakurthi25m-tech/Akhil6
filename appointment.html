@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="description" content="Request a video consultation with Dr. S. Kaushik Anurag." />
+  <meta name="theme-color" content="#0b4fb3" />
+  <title>Book a Consultation | Dr. Kaushik Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css" />
+</head>
+<body class="store-site">
+  <header class="store-header">
+    <div class="store-container store-nav">
+      <a class="store-brand" href="index.html"><span class="store-brand-mark"><span>+</span></span><span class="store-brand-copy"><strong>Dr. Kaushik Learning</strong><small>Medical notes &amp; clinical revision</small></span></a>
+      <nav class="store-nav-links" id="navLinks"><a href="index.html">Home</a><a href="learning.html">Notes Store</a><a href="index.html#subjects">Subjects</a><a href="index.html#free-resource">Free Resources</a><a href="index.html#author">About the Author</a><a class="active" href="appointment.html">Consultation</a></nav>
+      <button class="store-nav-toggle" id="navToggle" type="button" aria-label="Open navigation">☰</button>
+      <a class="store-library-link" href="library.html"><span>▣</span> My Library</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="appointment-page-hero">
+      <div class="store-container">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Video Consultation</span></div>
+        <div class="store-eyebrow" style="margin-top:24px">Complementary service</div>
+        <h1>Book a video consultation when you need one.</h1>
+        <p>Consultation scheduling remains separate from the medical-notes store. Choose a live available time and submit only basic contact details.</p>
+      </div>
+    </section>
+
+    <section class="appointment-section">
+      <div class="store-container">
+        <div class="appointment-wrap">
+          <div class="appointment-info">
+            <div class="store-eyebrow">Dr. S. Kaushik Anurag</div>
+            <h2>Request a consultation in under a minute.</h2>
+            <p id="appointmentIntro">The doctor can review the request and confirm video-consultation details by phone, WhatsApp or email.</p>
+            <div class="appointment-points">
+              <div><b>✓</b><span><strong>No patient account required</strong><small>Book directly using basic contact details.</small></span></div>
+              <div><b>✓</b><span><strong>Live appointment availability</strong><small>Booked times are removed automatically.</small></span></div>
+              <div><b>!</b><span><strong>Not for emergencies</strong><small>Use local emergency services for urgent medical situations.</small></span></div>
+            </div>
+          </div>
+
+          <form class="appointment-form" id="appointmentForm">
+            <div class="form-heading"><div><div class="store-eyebrow">Appointment request</div><h2>Choose a convenient date and time.</h2></div><span>Usually takes 1 minute</span></div>
+            <div class="form-grid">
+              <div class="field"><label for="patientName">Full name *</label><input id="patientName" name="patientName" required autocomplete="name" placeholder="Enter your full name" /></div>
+              <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="Enter mobile number" /></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="Optional" /></div>
+              <div class="field"><label for="appointmentDate">Preferred date *</label><input id="appointmentDate" name="appointmentDate" type="date" required /></div>
+              <div class="field full"><label for="slot">Available appointment time *</label><select id="slot" name="slot" required disabled><option value="">Select a date first</option></select><small id="slotHelp">Times are generated from the doctor’s live availability and existing bookings.</small></div>
+            </div>
+            <div class="field honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
+            <label class="consent-row"><input id="privacyConsent" type="checkbox" required /><span>I consent to my name and contact details being used only to process this appointment request. I have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a>. *</span></label>
+            <div id="appointmentNotice" class="hidden"></div>
+            <button class="store-btn store-btn-primary" type="submit">Submit appointment request →</button>
+            <p class="form-privacy">Please do not include symptoms, reports or sensitive medical history in this form.</p>
+          </form>
+        </div>
+        <div class="contact-mini">
+          <div><strong>Phone</strong><span id="clinicPhone">Shown after configuration</span></div>
+          <div><strong>WhatsApp</strong><span id="clinicWhatsapp">Shown after configuration</span></div>
+          <div><strong>Availability</strong><span id="clinicHours">By appointment</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="store-footer">
+    <div class="store-container store-footer-grid">
+      <div><a class="store-brand footer-brand" href="index.html"><span class="store-brand-mark"><span>+</span></span><span class="store-brand-copy"><strong>Dr. Kaushik Learning</strong><small>Medical notes &amp; clinical revision</small></span></a><p>Structured educational resources for medical learners. Not a substitute for supervised medical training or patient-specific advice.</p></div>
+      <div><strong>Learn</strong><a href="learning.html">Notes Store</a><a href="index.html#free-resource">Free Resources</a><a href="library.html">My Library</a></div>
+      <div><strong>Doctor</strong><a href="index.html#author">About the Author</a><a href="appointment.html">Book Consultation</a></div>
+      <div><strong>Information</strong><a href="privacy.html">Privacy Notice</a><a href="admin.html">Admin Login</a></div>
+    </div>
+    <div class="store-container store-footer-bottom"><span>© <span id="year"></span> Dr. Kaushik Learning.</span><span>For emergencies, contact local emergency services.</span></div>
+  </footer>
+  <div class="store-mobile-bar"><a href="learning.html">Browse Notes</a><a href="appointment.html">Consultation</a></div>
+
+  <div class="modal-backdrop hidden" id="bookingModal">
+    <article class="booking-modal">
+      <div class="confirmation-icon">✓</div><div class="store-eyebrow">Appointment request received</div><h2>Your selected time is reserved.</h2>
+      <p class="confirmation-copy">The request is pending review by the doctor. Keep the reference below for follow-up.</p>
+      <div class="confirmation-grid"><div><span>Reference</span><strong id="confirmRef">—</strong></div><div><span>Date</span><strong id="confirmDate">—</strong></div><div><span>Time</span><strong id="confirmTime">—</strong></div><div><span>Joining details</span><strong id="confirmVenue">Shared after confirmation</strong></div></div>
+      <div class="confirmation-actions"><a id="confirmWhatsapp" class="store-btn store-btn-light" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="confirmCall" class="store-btn store-btn-light" href="#">Call doctor</a><button id="bookingClose" class="store-btn store-btn-primary" type="button">Done</button></div>
+      <p class="confirmation-note">For emergencies, contact local emergency services instead of waiting for an appointment response.</p>
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="catalogue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
