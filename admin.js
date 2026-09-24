@@ -7,8 +7,30 @@
   const state={settings:null,services:[],facilities:[],articles:[],appointments:[],bookingConfig:null,schedule:[],blockedDates:[],products:[],storeAdmin:false,editor:null};
   const demoGet=(k,f)=>{try{return JSON.parse(localStorage.getItem(`clinic_${k}`))??f}catch{return f}}; const demoSet=(k,v)=>localStorage.setItem(`clinic_${k}`,JSON.stringify(v));
 
-  async function authInit(){if(!isLive){$('demoBanner').classList.remove('hidden');$('adminView').classList.remove('hidden');await loadAll();return;}const {data:{session}}=await client.auth.getSession();if(session){$('adminView').classList.remove('hidden');await loadAll();}else $('loginView').classList.remove('hidden');}
-  async function login(e){e.preventDefault();const box=$('loginNotice');box.className='notice notice-info';box.textContent='Signing in…';const {error}=await client.auth.signInWithPassword({email:$('loginEmail').value.trim(),password:$('loginPassword').value});if(error){box.className='notice notice-error';box.textContent=error.message;return;}$('loginView').classList.add('hidden');$('adminView').classList.remove('hidden');await loadAll();}
+  async function hasAdminAccess(){
+    const {data,error}=await client.rpc('is_store_admin');
+    return !error&&data===true;
+  }
+  async function authInit(){
+    if(!isLive){$('demoBanner').classList.remove('hidden');$('adminView').classList.remove('hidden');await loadAll();return;}
+    const {data:{session}}=await client.auth.getSession();
+    if(session&&await hasAdminAccess()){$('adminView').classList.remove('hidden');await loadAll();return;}
+    if(session)await client.auth.signOut();
+    $('loginView').classList.remove('hidden');
+    if(session){const box=$('loginNotice');box.className='notice notice-error';box.textContent='This account is not authorised to access the admin dashboard.';}
+  }
+  async function login(e){
+    e.preventDefault();
+    const box=$('loginNotice');box.className='notice notice-info';box.textContent='Signing in…';
+    const {error}=await client.auth.signInWithPassword({email:$('loginEmail').value.trim(),password:$('loginPassword').value});
+    if(error){box.className='notice notice-error';box.textContent=error.message;return;}
+    if(!await hasAdminAccess()){
+      await client.auth.signOut();
+      box.className='notice notice-error';box.textContent='This account is not authorised to access the admin dashboard.';
+      return;
+    }
+    $('loginView').classList.add('hidden');$('adminView').classList.remove('hidden');await loadAll();
+  }
 
   async function loadAll(){
     if(!isLive){state.settings=demoGet('settings',seed.settings);state.services=demoGet('services',seed.services);state.facilities=demoGet('facilities',seed.facilities);state.articles=demoGet('articles',seed.articles);state.appointments=demoGet('appointments',[]);state.bookingConfig=demoGet('bookingConfig',{id:1,slot_minutes:20,booking_window_days:30,min_notice_hours:2,timezone:'Asia/Kolkata'});state.schedule=demoGet('schedule',[{id:1,day_of_week:1,start_time:'09:00',end_time:'12:00',active:true},{id:2,day_of_week:1,start_time:'17:00',end_time:'20:00',active:true}]);state.blockedDates=demoGet('blockedDates',[]);state.products=demoGet('products',[]);state.storeAdmin=true;
