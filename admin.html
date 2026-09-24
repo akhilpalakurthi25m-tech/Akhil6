@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Doctor Admin</title>
+  <title>Clinic Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260906" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="admin-body">
   <div id="loginView" class="login-wrap hidden">
     <form class="login-card" id="loginForm">
-      <div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong>Doctor Admin</strong><span>Secure content management</span></div></div>
-      <h1>Welcome back</h1><p>Sign in with your doctor/admin account.</p>
+      <div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong>Dr. Kaushik Admin</strong><span>Store &amp; consultation management</span></div></div>
+      <h1>Welcome back</h1><p>Sign in with the doctor/admin account created in Supabase Authentication.</p>
       <div id="loginNotice" class="hidden"></div>
       <div class="field"><label>Email</label><input id="loginEmail" type="email" required autocomplete="username" /></div>
       <div class="field" style="margin-top:14px"><label>Password</label><input id="loginPassword" type="password" required autocomplete="current-password" /></div>
@@ -24,9 +24,10 @@
 
   <div id="adminView" class="admin-shell hidden">
     <aside class="sidebar">
-      <div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong>Doctor Admin</strong><span>Dr. S. Kaushik Anurag</span></div></div>
+      <div class="brand"><div class="brand-mark">✚</div><div class="brand-text"><strong>Dr. Kaushik Admin</strong><span>Store &amp; consultation controls</span></div></div>
       <nav class="side-nav">
         <button class="active" data-tab="dashboard">Overview</button>
+        <button data-tab="products">Products</button>
         <button data-tab="appointments">Appointments</button>
         <button data-tab="availability">Availability</button>
         <button data-tab="services">Services</button>
@@ -37,20 +38,38 @@
     </aside>
     <main class="admin-main">
       <div id="demoBanner" class="demo-banner hidden">Demo mode is active. Changes are saved only in this browser. Connect Supabase in <strong>config.js</strong> before publishing.</div>
-      <div class="admin-top"><div><h1 id="pageTitle">Overview</h1><p id="pageSubtitle">Manage appointments and website content.</p></div><div class="actions"><a class="btn btn-outline btn-sm" href="index.html" target="_blank">View website ↗</a><button class="btn btn-outline btn-sm" id="logoutBtn">Sign out</button></div></div>
+      <div class="admin-top"><div><h1 id="pageTitle">Overview</h1><p id="pageSubtitle">Manage the clinic website from one place.</p></div><div class="actions"><a class="btn btn-outline btn-sm" href="index.html" target="_blank">View website ↗</a><button class="btn btn-outline btn-sm" id="logoutBtn">Sign out</button></div></div>
 
       <section data-section="dashboard">
         <div class="admin-grid">
           <div class="metric"><span>Pending appointments</span><strong id="metricPending">0</strong></div>
-          <div class="metric"><span>Published services</span><strong id="metricServices">0</strong></div>
+          <div class="metric"><span>Published products</span><strong id="metricProducts">0</strong></div>
           <div class="metric"><span>Published articles</span><strong id="metricArticles">0</strong></div>
-          <div class="metric"><span>Consultation details</span><strong id="metricFacilities">0</strong></div>
+          <div class="metric"><span>Facilities shown</span><strong id="metricFacilities">0</strong></div>
         </div>
         <div class="panel"><div class="panel-head"><h2>Recent appointment requests</h2><button class="btn btn-soft btn-sm" data-go="appointments">Manage all</button></div><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Date</th><th>Slot</th><th>Status</th></tr></thead><tbody id="recentAppointments"></tbody></table></div></div>
       </section>
 
+      <section data-section="products" class="hidden">
+        <div id="storeAdminNotice" class="notice notice-info">Loading store permissions…</div>
+        <div class="panel">
+          <div class="panel-head"><div><h2>Medical-note products</h2><span style="color:var(--muted);font-size:.85rem">Create products as drafts first. Publish only after clinical review.</span></div><button class="btn btn-primary btn-sm" id="addProductBtn" type="button">+ Add product</button></div>
+          <div id="productEditor"></div>
+        </div>
+
+        <form class="panel" id="productUploadForm">
+          <div class="panel-head"><div><h2>Upload product file</h2><span style="color:var(--muted);font-size:.85rem">Paid PDFs go to private storage. Covers and previews are public.</span></div><button class="btn btn-primary btn-sm" type="submit">Upload file</button></div>
+          <div id="productUploadNotice" class="hidden"></div>
+          <div class="form-grid">
+            <div class="field"><label>Product</label><select id="uploadProduct" required></select></div>
+            <div class="field"><label>File purpose</label><select id="uploadPurpose"><option value="paid-pdf">Private paid PDF</option><option value="public-pdf">Public/free PDF</option><option value="preview-pdf">Public preview PDF</option><option value="cover-image">Public cover image</option></select></div>
+            <div class="field full"><label>Select file</label><input id="uploadFile" type="file" accept="application/pdf,image/png,image/jpeg,image/webp" required /></div>
+          </div>
+        </form>
+      </section>
+
       <section data-section="appointments" class="hidden">
-        <div class="panel"><div class="panel-head"><h2>Appointment requests</h2><span style="color:var(--muted);font-size:.85rem">Use status to manage the appointment queue.</span></div><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Contact</th><th>Date</th><th>Slot</th><th>Status</th><th>Action</th></tr></thead><tbody id="appointmentsTable"></tbody></table></div></div>
+        <div class="panel"><div class="panel-head"><h2>Appointment requests</h2><span style="color:var(--muted);font-size:.85rem">Use status to manage the clinic queue.</span></div><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Contact</th><th>Date</th><th>Slot</th><th>Status</th><th>Action</th></tr></thead><tbody id="appointmentsTable"></tbody></table></div></div>
       </section>
 
 
@@ -62,7 +81,7 @@
             <div class="field"><label>Appointment duration</label><select id="ruleSlotMinutes"><option value="15">15 minutes</option><option value="20">20 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></div>
             <div class="field"><label>Patients can book up to</label><input id="ruleWindowDays" type="number" min="1" max="180" /></div>
             <div class="field"><label>Minimum advance notice</label><input id="ruleMinNotice" type="number" min="0" max="72" step="1" /></div>
-            <div class="field"><label>Appointment timezone</label><input id="ruleTimezone" value="Asia/Kolkata" /></div>
+            <div class="field"><label>Clinic timezone</label><input id="ruleTimezone" value="Asia/Kolkata" /></div>
           </div>
         </form>
 
@@ -72,10 +91,10 @@
         </div>
 
         <div class="panel">
-          <div class="panel-head"><div><h2>Blocked dates</h2><span style="color:var(--muted);font-size:.85rem">Use for holidays, leave, conferences or unavailable days.</span></div></div>
+          <div class="panel-head"><div><h2>Blocked dates</h2><span style="color:var(--muted);font-size:.85rem">Use for holidays, leave, conferences or clinic closures.</span></div></div>
           <form id="blockedDateForm" class="availability-add-row">
             <div class="field"><label>Date</label><input id="blockedDate" type="date" required /></div>
-            <div class="field availability-reason"><label>Reason (optional)</label><input id="blockedReason" placeholder="e.g. Doctor unavailable" /></div>
+            <div class="field availability-reason"><label>Reason (optional)</label><input id="blockedReason" placeholder="e.g. Clinic closed" /></div>
             <button class="btn btn-primary btn-sm" type="submit">Block date</button>
           </form>
           <div id="blockedDatesEditor" style="margin-top:18px"></div>
@@ -87,7 +106,7 @@
       </section>
 
       <section data-section="facilities" class="hidden">
-        <div class="panel"><div class="panel-head"><h2>Consultation information</h2><button class="btn btn-primary btn-sm" id="addFacilityBtn">+ Add detail</button></div><div id="facilityEditor"></div></div>
+        <div class="panel"><div class="panel-head"><h2>Consultation information</h2><button class="btn btn-primary btn-sm" id="addFacilityBtn">+ Add item</button></div><div id="facilityEditor"></div></div>
       </section>
 
       <section data-section="articles" class="hidden">
@@ -96,18 +115,20 @@
 
       <section data-section="settings" class="hidden">
         <form class="panel" id="settingsForm"><div class="panel-head"><h2>Website details</h2><button class="btn btn-primary btn-sm" type="submit">Save changes</button></div><div id="settingsNotice" class="hidden"></div><div class="form-grid">
-          <div class="field"><label>Website display name</label><input id="sClinicName" required /></div>
+          <div class="field"><label>Clinic name</label><input id="sClinicName" required /></div>
           <div class="field"><label>Doctor name</label><input id="sDoctorName" required /></div>
-          <div class="field full"><label>Qualification / residency</label><input id="sQualification" /></div>
+          <div class="field full"><label>Qualification / speciality</label><input id="sQualification" /></div>
           <div class="field full"><label>Homepage introduction</label><textarea id="sHeroIntro" rows="3"></textarea></div>
           <div class="field full"><label>Doctor bio</label><textarea id="sDoctorBio" rows="4"></textarea></div>
           <div class="field"><label>Experience label</label><input id="sExperience" /></div>
           <div class="field"><label>Consultation mode</label><input id="sMode" /></div>
           <div class="field"><label>Next availability</label><input id="sAvailability" /></div>
-          <div class="field"><label>Phone / WhatsApp</label><input id="sPhone" /></div>
-          <div class="field full"><label>Consultation joining instructions</label><input id="sAddress" /></div>
+          <div class="field"><label>Call phone number</label><input id="sPhone" placeholder="+91..." /></div>
+          <div class="field"><label>WhatsApp number</label><input id="sWhatsApp" placeholder="+91..." /></div>
+          <div class="field full"><label>Consultation venue note</label><input id="sVenueNote" placeholder="Venue details are shared after appointment confirmation." /></div>
+          <div class="field full"><label>Future clinic address (optional; not shown publicly yet)</label><input id="sAddress" /></div>
           <div class="field"><label>Email</label><input id="sEmail" type="email" /></div>
-          <div class="field"><label>Availability text</label><input id="sHours" /></div>
+          <div class="field"><label>Clinic hours</label><input id="sHours" /></div>
         </div></form>
       </section>
     </main>
@@ -117,7 +138,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
-  <script src="doctor-profile.js?v=20260906"></script>
-  <script src="admin.js?v=20260906"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 (() => {
   const cfg = window.CLINIC_CONFIG || {};
-  const products = Array.isArray(window.MED_NOTES_PRODUCTS) ? window.MED_NOTES_PRODUCTS : [];
+  let products = Array.isArray(window.MED_NOTES_PRODUCTS) ? window.MED_NOTES_PRODUCTS : [];
   const hasSupabaseSdk = Boolean(window.supabase && typeof window.supabase.createClient === 'function');
   const isLive = Boolean(hasSupabaseSdk && cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && !cfg.DEMO_MODE);
   const supabaseClient = isLive ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY) : null;
@@ -15,6 +15,51 @@
     venue_note: 'Video-consultation and joining details are shared after appointment confirmation.'
   };
   let currentSettings = defaults;
+
+  function mapDatabaseProduct(row) {
+    return {
+      id: row.slug,
+      dbId: row.id,
+      title: row.title,
+      shortTitle: row.short_title,
+      subject: row.subject,
+      category: row.category,
+      description: row.description,
+      format: row.format,
+      language: row.language,
+      pages: row.pages,
+      edition: row.edition,
+      author: row.author,
+      price: Number(row.price_paise || 0) / 100,
+      status: row.status,
+      tone: row.tone || 'blue',
+      symbol: row.symbol || 'PDF',
+      coverUrl: row.cover_url,
+      previewUrl: row.preview_url,
+      file: row.public_file_url,
+      privateFilePath: row.private_file_path,
+      highlights: Array.isArray(row.highlights) ? row.highlights : [],
+      audience: Array.isArray(row.audience) ? row.audience : [],
+      clinicalReviewed: Boolean(row.clinical_reviewed)
+    };
+  }
+
+  async function loadProducts() {
+    if (!isLive) return products;
+    const { data, error } = await supabaseClient
+      .from('products')
+      .select('*')
+      .eq('published', true)
+      .in('status', ['coming-soon', 'available'])
+      .order('display_order')
+      .order('created_at');
+    if (error) {
+      console.warn('Using the local catalogue until the store database migration is installed.', error);
+      return products;
+    }
+    products = (data || []).map(mapDatabaseProduct);
+    return products;
+  }
 
   function digits(value) { return String(value || '').replace(/\D/g, ''); }
   function tel(value) { const raw = String(value || '').trim(); return raw ? `tel:${raw.replace(/\s/g, '')}` : '#'; }
@@ -70,8 +115,17 @@
     const search = $('catalogueSearch');
     const filters = $('categoryFilters');
     const params = new URLSearchParams(location.search);
+    const categories = [...new Set(products.map(product => product.category).filter(Boolean))];
     let activeCategory = params.get('category') || 'All';
-    if (!['All','Free','Medicine','Respiratory','Diagnostics','Emergency','Pharmacology'].includes(activeCategory)) activeCategory = 'All';
+    if (!['All','Free',...categories].includes(activeCategory)) activeCategory = 'All';
+
+    if (filters) {
+      filters.innerHTML = [
+        ['All', 'All notes'],
+        ['Free', 'Free'],
+        ...categories.map(category => [category, category])
+      ].map(([value, label]) => `<button class="filter-btn" type="button" data-category="${safe(value)}">${safe(label)}</button>`).join('');
+    }
 
     function render() {
       const query = String(search?.value || '').trim().toLowerCase();
@@ -130,12 +184,19 @@
     $('metaLanguage').textContent = product.language || 'English';
     $('metaEdition').textContent = product.edition || 'Planned';
     const action = $('productAction');
-    if (product.status === 'available' && product.file) {
+    if (product.status === 'available' && product.price === 0 && product.file) {
       action.textContent = 'Open free PDF →';
       action.href = product.file;
       action.target = '_blank';
       action.rel = 'noopener';
       $('purchaseNote').textContent = 'Free educational resource. No account or payment is required.';
+    } else if (product.status === 'available' && product.price > 0) {
+      action.textContent = 'Payment testing comes next';
+      action.href = '#';
+      action.className = 'store-btn store-btn-disabled';
+      action.setAttribute('aria-disabled', 'true');
+      action.addEventListener('click', event => event.preventDefault());
+      $('purchaseNote').textContent = 'This product is published, but checkout remains disabled until Razorpay test verification is complete.';
     } else {
       action.textContent = 'Coming soon';
       action.href = '#';
@@ -302,8 +363,113 @@
     });
   }
 
+  function libraryNotice(message, type = 'info') {
+    const box = $('libraryNotice');
+    if (!box) return;
+    box.className = `store-notice store-notice-${type}`;
+    box.textContent = message;
+  }
+
+  async function renderLibrary(session) {
+    const signedOut = $('librarySignedOut');
+    const signedIn = $('librarySignedIn');
+    if (!signedOut || !signedIn) return;
+    signedOut.classList.toggle('hidden', Boolean(session));
+    signedIn.classList.toggle('hidden', !session);
+    if (!session) return;
+
+    $('libraryEmail').textContent = session.user.email || 'Signed-in learner';
+    const { data, error } = await supabaseClient
+      .from('purchases')
+      .select('id,access_status,purchased_at,expires_at,products(*)')
+      .eq('access_status', 'active')
+      .order('purchased_at', { ascending: false });
+    if (error) {
+      libraryNotice('The learner database is not ready yet. Run the Store V1 Supabase migration first.', 'error');
+      return;
+    }
+
+    const list = $('libraryProducts');
+    const rows = data || [];
+    list.innerHTML = rows.length ? rows.map(item => {
+      const product = mapDatabaseProduct(item.products);
+      const button = product.file
+        ? `<a class="store-btn store-btn-primary library-open" href="${safe(product.file)}" target="_blank" rel="noopener">Open PDF</a>`
+        : product.privateFilePath
+          ? `<button class="store-btn store-btn-primary library-download" type="button" data-path="${safe(product.privateFilePath)}">Secure download</button>`
+          : '<span class="library-file-pending">File pending</span>';
+      return `<article class="library-product-card"><div class="library-demo-cover">${safe(product.symbol || 'PDF')}</div><div><strong>${safe(product.title)}</strong><small>${safe(product.subject)} · ${safe(product.format)}</small></div>${button}</article>`;
+    }).join('') : '<div class="library-empty"><strong>Your library is ready.</strong><span>Add the free resource below or return after a verified purchase.</span></div>';
+
+    document.querySelectorAll('.library-download').forEach(button => {
+      button.addEventListener('click', async () => {
+        button.disabled = true;
+        button.textContent = 'Preparing…';
+        const { data: signed, error: signedError } = await supabaseClient.storage
+          .from('paid-notes')
+          .createSignedUrl(button.dataset.path, 300, { download: true });
+        button.disabled = false;
+        button.textContent = 'Secure download';
+        if (signedError) {
+          libraryNotice('This file could not be authorised. Confirm that the purchase is active.', 'error');
+          return;
+        }
+        window.location.href = signed.signedUrl;
+      });
+    });
+
+    const free = products.filter(product => product.status === 'available' && product.price === 0 && product.dbId);
+    $('libraryFreeProducts').innerHTML = free.map(product => `<button class="store-btn store-btn-light claim-free" type="button" data-id="${safe(product.dbId)}">Add ${safe(product.shortTitle)} to My Library</button>`).join('');
+    document.querySelectorAll('.claim-free').forEach(button => button.addEventListener('click', async () => {
+      button.disabled = true;
+      const { error: claimError } = await supabaseClient.rpc('claim_free_product', { p_product_id: button.dataset.id });
+      if (claimError) {
+        button.disabled = false;
+        libraryNotice(claimError.message, 'error');
+        return;
+      }
+      libraryNotice('The free resource has been added to your library.', 'success');
+      await renderLibrary(session);
+    }));
+  }
+
+  async function setupLibrary() {
+    if (!$('libraryAuth')) return;
+    if (!isLive) {
+      $('librarySignedOut').classList.remove('hidden');
+      libraryNotice('Connect Supabase in config.js to test learner sign-in.', 'error');
+      return;
+    }
+
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    await renderLibrary(session);
+    $('libraryEmailForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const email = $('libraryLoginEmail').value.trim().toLowerCase();
+      libraryNotice('Sending your secure sign-in link…');
+      const redirectUrl = new URL('library.html', window.location.href).href.split(/[?#]/)[0];
+      const { error } = await supabaseClient.auth.signInWithOtp({
+        email,
+        options: {
+          shouldCreateUser: true,
+          emailRedirectTo: redirectUrl
+        }
+      });
+      if (error) {
+        libraryNotice(error.message, 'error');
+        return;
+      }
+      libraryNotice(`A secure sign-in link was sent to ${email}. Open it in this browser to access My Library.`, 'success');
+    });
+    $('librarySignOut').addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+      location.reload();
+    });
+  }
+
   async function init() {
     setupCommonUi();
+    await loadProducts();
     renderFeaturedProducts();
     setupCatalogue();
     setupProductPage();
@@ -314,6 +480,7 @@
       applyPublicSettings(defaults);
     }
     await setupAppointment();
+    await setupLibrary();
   }
 
   init();
